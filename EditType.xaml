@@ -1,0 +1,74 @@
+﻿<Window x:Class="EFCourtStatements.EditType"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EFCourtStatements"
+        mc:Ignorable="d"
+        Title="Редактирование списка типов заявлений" 
+        MinHeight="300" MinWidth="600" Height="300" Width="600"
+        Background="#232323" Foreground="White">
+
+    <Window.Resources>
+        <Style x:Key="tBl_style" TargetType="TextBlock">
+            <Setter Property="Margin" Value="20 10"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="Candara Light"/>
+        </Style>
+        <Style x:Key="tBx_style" TargetType="TextBox">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="FontSize" Value="23"/>
+            <Setter Property="Margin" Value="0 10"/>
+            <Setter Property="Background" Value="#efefef"/>
+            <Setter Property="Foreground" Value="#161616"/>
+            <Setter Property="FontFamily" Value="Candara Light"/>
+        </Style>
+        <Style x:Key="but_style" TargetType="Button">
+            <Setter Property="Margin" Value="20 0 20 10"/>
+            <Setter Property="Padding" Value="3"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#232323"/>
+            <Setter Property="FontFamily" Value="Candara Light"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Название типа:" Style="{StaticResource tBl_style}"
+                   VerticalAlignment="Center"/>
+        <TextBox x:Name="typeName" Grid.Column="1" Style="{StaticResource tBx_style}" 
+                 Text="{Binding Path=typeST.NameType}"/>
+        <StackPanel Margin="0 10" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Top">
+            <Button x:Name="Add" Style="{StaticResource but_style}" Content="Добавить" Click="Add_Click"/>
+            <!--<Button x:Name="Edit" Style="{StaticResource but_style}" Content="Изменить" Click="Edit_Click"/>-->
+            <Button x:Name="Delete" Style="{StaticResource but_style}" Content="Удалить" Click="Delete_Click"/>
+        </StackPanel>
+
+        <ListBox x:Name="listBox" FontSize="18" Grid.Row="1" Grid.ColumnSpan="2"
+                 Margin="20 0 0 10" Background="#efefef" Foreground="#161616" >
+            <!--DataContext="{Binding ElementName=statListBox, Path=SelectedItem}" >-->
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Margin="5" Grid.Column="2" Text="{Binding Path=NameType}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Bottom">
+            
+            <Button Style="{StaticResource but_style}" Content="Ок" Click="Button_Click"/>
+            <Button Style="{StaticResource but_style}" Content="Отмена" Click="Button_Click_1"/>
+        </StackPanel>
+    </Grid>
+</Window>

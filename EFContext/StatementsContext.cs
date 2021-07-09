@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EFCourtStatements.EFContext
 {
-    class StatementsContext : DbContext
+    public class StatementsContext : DbContext
     {
         public DbSet<Judge> Judges { get; set; }
         public DbSet<StatInfo> StatementsInfo { get; set; }

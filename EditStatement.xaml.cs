@@ -70,9 +70,9 @@ namespace EFCourtStatements
                 comboBoxJudge.SelectedIndex < 0 ||
                 in_date.SelectedDate == null ||
                 pers_name.Text.Length == 0)
-                MessageBox.Show("Ошибка! Поля, обязательные для заполнения:\n" +
+                MessageBox.Show("Остались не заполненные поля!\nОбязательные для заполнения:\n" +
                     "Номер, Тип, Дата поступления, Судья, ФИО/название организации",
-                    "Ошибка добавления заявления",
+                    "Ошибка!",
                     MessageBoxButton.OK,
                     MessageBoxImage.Warning);
             else 

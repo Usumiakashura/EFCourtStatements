@@ -36,14 +36,22 @@ namespace EFCourtStatements
             statementsContext.TypesSt.Load();
             statementsContext.Judges.Load();
 
+            FillCollections();
+
+            listBox.ItemsSource = statementsContext.StatementsInfo.Local.ToBindingList();
+
+            statusBar.Text = $"Заявлений: {listBox.Items.Count}";
+        }
+
+        public void FillCollections()
+        {
+            type_collection.Clear();
+            judge_collection.Clear();
             foreach (var p in statementsContext.TypesSt)
                 type_collection.Add(p);
             foreach (var p in statementsContext.Judges)
                 judge_collection.Add(p);
 
-            listBox.ItemsSource = statementsContext.StatementsInfo.Local.ToBindingList();
-
-            statusBar.Text = $"Заявлений: {listBox.Items.Count}";
         }
 
         private void AddNew_Button_Click(object sender, RoutedEventArgs e)
@@ -56,6 +64,7 @@ namespace EFCourtStatements
                 statementsContext.StatementsInfo.Add(addStatInfo);
                 statementsContext.SaveChanges();
             }
+            statusBar.Text = $"Заявлений: {listBox.Items.Count}";
         }
 
         private void Update_Button_Click(object sender, RoutedEventArgs e)
@@ -108,6 +117,28 @@ namespace EFCourtStatements
                 }
                 listBox.ItemsSource = searchCollection;
                 statusBar.Text = $"Заявлений: {listBox.Items.Count}";
+            }
+        }
+
+        private void MenuItem_TypeEdit_Click(object sender, RoutedEventArgs e)
+        {
+            EditType dialog = new EditType(statementsContext);
+            var result = dialog.ShowDialog();
+            if (result == true)
+            {
+                statementsContext.SaveChanges();
+                FillCollections();
+            }
+        }
+
+        private void MenuItem_JudgeEdit_Click(object sender, RoutedEventArgs e)
+        {
+            EditJudge dialog = new EditJudge(statementsContext);
+            var result = dialog.ShowDialog();
+            if (result == true)
+            {
+                statementsContext.SaveChanges();
+                FillCollections();
             }
         }
     }
