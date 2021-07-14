@@ -1,5 +1,6 @@
 ﻿using EFCourtStatements.EFContext;
 using EFCourtStatements.Models;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -37,8 +38,13 @@ namespace EFCourtStatements
         {
             if (typeName.Text.Length > 0)
             {
-                typeST.NameType = typeName.Text;
+                listBox.SelectedIndex = -1;
+                typeST = new TypeST() { NameType = typeName.Text };
                 statementsContext.TypesSt.Add(typeST);
+                statementsContext.SaveChanges();
+
+                typeName.Text = "";
+                statementsContext.TypesSt.Load();
             }
         }
 
@@ -79,30 +85,26 @@ namespace EFCourtStatements
                 
         }
 
-        //private void Edit_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (listBox.SelectedIndex > 0)
-        //    {
-        //        typeST = listBox.SelectedItem as TypeST;
-                
-        //        var result = MessageBox.Show(
-        //        "Вы уверены?",
-        //        "Изменить тип",
-        //        MessageBoxButton.YesNo,
-        //        MessageBoxImage.Question);
-        //        if (result == MessageBoxResult.Yes)
-        //        {
-        //            //typeST.NameType = typeName.Text;
-        //            //statementsContext.TypesSt.Find(TypeST.TypeSTId).NameType = typeName.Text;
-        //            //((TypeST)listBox.SelectedItem).NameType = typeName.Text;
-        //            statementsContext.SaveChanges();
-                    
-        //        }
-        //        //listBox.ItemsSource = statementsContext.TypesSt.Local.ToBindingList();
-        //    }
-            
-        //    listBox.ItemsSource = statementsContext.TypesSt.Local.ToBindingList();
-        //}
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            if (listBox.SelectedIndex > 0)
+            {
+                typeST = listBox.SelectedItem as TypeST;
+
+                var result = MessageBox.Show(
+                "Вы уверены?",
+                "Изменить тип",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    statementsContext.TypesSt.Find(typeST.TypeSTId).NameType = typeName.Text;
+                    statementsContext.SaveChanges();
+                    listBox.Items.Refresh();
+                    typeName.Text = "";
+                }
+            }
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

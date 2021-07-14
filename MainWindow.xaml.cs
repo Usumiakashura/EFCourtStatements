@@ -141,5 +141,10 @@ namespace EFCourtStatements
                 FillCollections();
             }
         }
+
+        private void menuItemBigFind_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

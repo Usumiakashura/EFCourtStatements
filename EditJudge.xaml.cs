@@ -39,16 +39,60 @@ namespace EFCourtStatements
                 firstName.Text.Length > 0 &&
                 sName.Text.Length > 0)
             {
-                judge.LastName = lastName.Text;
-                judge.FirstName = firstName.Text;
-                judge.SName = sName.Text;
+                listBox.SelectedIndex = -1;
+                judge = new Judge() { LastName = lastName.Text, FirstName = firstName.Text, SName = sName.Text };
+
                 statementsContext.Judges.Add(judge);
+
+                lastName.Text = "";
+                firstName.Text = "";
+                sName.Text = "";
+
+                statementsContext.Judges.Load();
+                //listBox.ItemsSource = null;
+                //listBox.ItemsSource = statementsContext.Judges.Local.ToBindingList();
             }
             else MessageBox.Show(
                 "Заполните все поля",
                 "Ошибка!",
                 MessageBoxButton.OK,
                 MessageBoxImage.Warning);
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            if (listBox.SelectedIndex > 0)
+            {
+                judge = listBox.SelectedItem as Judge;
+
+                var result = MessageBox.Show(
+                "Вы уверены?",
+                "Изменить Судью",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    if (lastName.Text.Length > 0 &&
+                    firstName.Text.Length > 0 &&
+                    sName.Text.Length > 0)
+                    {
+                        statementsContext.Judges.Find(judge.JudgeId).LastName = lastName.Text;
+                        statementsContext.Judges.Find(judge.JudgeId).FirstName = firstName.Text;
+                        statementsContext.Judges.Find(judge.JudgeId).SName = sName.Text;
+
+                        statementsContext.SaveChanges();
+                        listBox.Items.Refresh();
+                        lastName.Text = "";
+                        firstName.Text = "";
+                        sName.Text = "";
+                    }
+                    else MessageBox.Show(
+                    "Заполните все поля",
+                    "Ошибка!",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+                }
+            }
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -80,6 +124,7 @@ namespace EFCourtStatements
                 {
                     statementsContext.Judges.Remove(judge);
                     statementsContext.SaveChanges();
+                    //listBox.Items.Refresh();
                 }
             }
         }
@@ -93,5 +138,6 @@ namespace EFCourtStatements
         {
             this.DialogResult = false;
         }
+
     }
 }

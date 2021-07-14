@@ -48,7 +48,7 @@
                           BorderBrush="#232323" Background="#232323"
                           Click="MenuItem_TypeEdit_Click"/> 
             </MenuItem>
-            <MenuItem x:Name="menuItemBigFind" Header="Расширенный поиск"/>
+            <MenuItem x:Name="menuItemBigFind" Header="Расширенный поиск" Click="menuItemBigFind_Click"/>
             <MenuItem x:Name="menuItemReport" Header="Отчет" />
         </Menu>
 

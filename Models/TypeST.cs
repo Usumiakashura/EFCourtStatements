@@ -14,13 +14,16 @@ namespace EFCourtStatements.Models
 
         public  List<StatInfo> StatInfos { get; set; }
 
-        //public TypeST()
-        //{
-        //    StatInfos = new List<StatInfo>();
-        //}
+
+
+
+
+
+
         public override string ToString()
         {
             return $"{NameType}";
         }
+
     }
 }

@@ -47,11 +47,11 @@
 
         <TextBlock Text="Название типа:" Style="{StaticResource tBl_style}"
                    VerticalAlignment="Center"/>
-        <TextBox x:Name="typeName" Grid.Column="1" Style="{StaticResource tBx_style}" 
-                 Text="{Binding Path=typeST.NameType}"/>
+        <TextBox x:Name="typeName" Grid.Column="1" Style="{StaticResource tBx_style}" />
+        <!--Text="{Binding Path=NameType}"/>-->
         <StackPanel Margin="0 10" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Top">
             <Button x:Name="Add" Style="{StaticResource but_style}" Content="Добавить" Click="Add_Click"/>
-            <!--<Button x:Name="Edit" Style="{StaticResource but_style}" Content="Изменить" Click="Edit_Click"/>-->
+            <Button x:Name="Edit" Style="{StaticResource but_style}" Content="Изменить" Click="Edit_Click"/>
             <Button x:Name="Delete" Style="{StaticResource but_style}" Content="Удалить" Click="Delete_Click"/>
         </StackPanel>
 

@@ -1,15 +1,15 @@
-﻿<Window x:Class="EFCourtStatements.EditJudge"
+﻿<Window x:Class="EFCourtStatements.BigFind"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EFCourtStatements"
         mc:Ignorable="d"
-        Title="Редактирование списка типов заявлений" 
+        Title="Расширенный поиск" 
         MinHeight="400" MinWidth="600" Height="400" Width="600"
         Background="#232323" Foreground="White">
 
-    <Window.Resources>
+    <!--<Window.Resources>
         <Style x:Key="tBl_style" TargetType="TextBlock">
             <Setter Property="Margin" Value="20 10 20 0"/>
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -32,10 +32,10 @@
             <Setter Property="Background" Value="#232323"/>
             <Setter Property="FontFamily" Value="Candara Light"/>
         </Style>
-    </Window.Resources>
+    </Window.Resources>-->
 
     <Grid>
-        <Grid.ColumnDefinitions>
+        <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="6*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
@@ -72,17 +72,14 @@
 
         </Grid>
 
-        <StackPanel Grid.Column="1" Grid.Row="0" VerticalAlignment="Bottom">
-            <Button x:Name="Add" Style="{StaticResource but_style}" Content="Добавить" Click="Add_Click"/>
-            <Button x:Name="Edit" Style="{StaticResource but_style}" Content="Изменить" Click="Edit_Click" />
-        </StackPanel>
-        
+        <Button x:Name="Add" Style="{StaticResource but_style}" Content="Добавить" Click="Add_Click"
+                Grid.Column="1" Grid.Row="0" VerticalAlignment="Bottom"/>
         <Button x:Name="Delete" Style="{StaticResource but_style}" Content="Удалить" Click="Delete_Click" 
                 Grid.Column="1" Grid.Row="1" VerticalAlignment="Top"/>
 
         <ListBox x:Name="listBox" FontSize="18" Grid.Row="1" 
                  Margin="20 10 0 10" Background="#efefef" Foreground="#161616" >
-            <!--DataContext="{Binding}"  >-->
+            --><!--DataContext="{Binding}"  >--><!--
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding}" Margin="5" Grid.Column="2"/>
@@ -94,6 +91,6 @@
 
             <Button x:Name="OK" Style="{StaticResource but_style}" Content="Ок" Click="Button_Click"/>
             <Button x:Name="Cancel" Style="{StaticResource but_style}" Content="Отмена" Click="Button_Click_1"/>
-        </StackPanel>
+        </StackPanel>-->
     </Grid>
 </Window>
