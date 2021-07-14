@@ -63,9 +63,8 @@ namespace EFCourtStatements
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
-            
-
-            if (Convert.ToInt32(number.Text) <= 0 ||
+            if (number.Text.Length == 0 ||
+                Convert.ToInt32(number.Text) <= 0 ||
                 comboBoxType.SelectedIndex < 0 ||
                 comboBoxJudge.SelectedIndex < 0 ||
                 in_date.SelectedDate == null ||
@@ -90,7 +89,7 @@ namespace EFCourtStatements
 
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            if (e.Text == "0" && number.Text == "0")    //если введенный символ в текстбокс не "," и не число
+            if (e.Text == "0" && number.Text == "0")    //запрещает ввод 0 если в текстбоксе уже стоит 0
                 e.Handled = true;
             if (e.Text != "0" && number.Text == "0")    //убирает 0 в начале ввода номера заявления
                 number.Text = "";

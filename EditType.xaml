@@ -18,10 +18,9 @@
         </Style>
         <Style x:Key="tBx_style" TargetType="TextBox">
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
-            <Setter Property="FontSize" Value="23"/>
+            <Setter Property="FontSize" Value="22"/>
             <Setter Property="Margin" Value="0 10"/>
             <Setter Property="Background" Value="#efefef"/>
-            <Setter Property="Foreground" Value="#161616"/>
             <Setter Property="FontFamily" Value="Candara Light"/>
         </Style>
         <Style x:Key="but_style" TargetType="Button">
@@ -55,12 +54,12 @@
             <Button x:Name="Delete" Style="{StaticResource but_style}" Content="Удалить" Click="Delete_Click"/>
         </StackPanel>
 
-        <ListBox x:Name="listBox" FontSize="18" Grid.Row="1" Grid.ColumnSpan="2"
-                 Margin="20 0 0 10" Background="#efefef" Foreground="#161616" >
+        <ListBox x:Name="listBox" FontSize="22" Grid.Row="1" Grid.ColumnSpan="2"
+                 Margin="20 0 0 10" Background="#efefef" Foreground="#161616" FontFamily="Candara Light">
             <!--DataContext="{Binding ElementName=statListBox, Path=SelectedItem}" >-->
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Margin="5" Grid.Column="2" Text="{Binding Path=NameType}"/>
+                    <TextBlock Margin="2" Grid.Column="2" Text="{Binding Path=NameType}"/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

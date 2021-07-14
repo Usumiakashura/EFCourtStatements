@@ -113,7 +113,6 @@ namespace EFCourtStatements
                 {
                     if (statementsContext.StatementsInfo.Local[i].PersName.Contains(textBoxName.Text))
                         searchCollection.Add(statementsContext.StatementsInfo.Local[i]);
-                        
                 }
                 listBox.ItemsSource = searchCollection;
                 statusBar.Text = $"Заявлений: {listBox.Items.Count}";
@@ -142,9 +141,55 @@ namespace EFCourtStatements
             }
         }
 
-        private void menuItemBigFind_Click(object sender, RoutedEventArgs e)
+        private void MenuItemBigFind_Click(object sender, RoutedEventArgs e)
         {
+            BigFind dialog = new BigFind(judge_collection, type_collection);
+            var result = dialog.ShowDialog();
+            if (result == true)
+            {
+                searchCollection.Clear();   //очистка коллекции с найденными по критериям элементами
+                for (int i = 0; i < statementsContext.StatementsInfo.Local.Count(); i++)
+                {//цикл, в котором в searchCollection добавляются элементы, соответствующие поиску
+                    //если поле не пустое и не совпадает, то tf становится false и текущий объект не добавится в коллекцию
+                    bool tf = true;
+                    if (dialog.Statement.Number > 0 &&
+                        dialog.Statement.Number != statementsContext.StatementsInfo.Local[i].Number)
+                        tf = false;
+                    if (dialog.Statement.TypeSTId != null &&
+                        dialog.Statement.TypeSTId != statementsContext.StatementsInfo.Local[i].TypeSTId)
+                        tf = false;
+                    if (dialog.Statement.JudgeId != null &&
+                        dialog.Statement.JudgeId != statementsContext.StatementsInfo.Local[i].JudgeId)
+                        tf = false;
+                    if ((dialog.Statement.PersName != null) && 
+                        !statementsContext.StatementsInfo.Local[i].PersName.Contains(dialog.Statement.PersName))
+                        tf = false;
+                    
+                    //проверка дат (здесь InDate - начальная дата диапазона, DataCorrect - конечная дата диапазона)
+                    if (dialog.Statement.InDate != null && dialog.Statement.DataCorrect != null)
+                    {
+                        if (statementsContext.StatementsInfo.Local[i].InDate < dialog.Statement.InDate ||
+                        statementsContext.StatementsInfo.Local[i].InDate > dialog.Statement.DataCorrect)
+                            tf = false;
+                    }
+                    if (dialog.Statement.InDate != null && dialog.Statement.DataCorrect == null)
+                    {
+                        if (statementsContext.StatementsInfo.Local[i].InDate < dialog.Statement.InDate)
+                            tf = false;
+                    }
+                    if (dialog.Statement.InDate == null && dialog.Statement.DataCorrect != null)
+                    {
+                        if (statementsContext.StatementsInfo.Local[i].InDate > dialog.Statement.DataCorrect)
+                            tf = false;
+                    }
 
+                    if (tf) //текущий объект добавится в коллекцию поиска либо если было совпадение, либо если все графы пустые
+                        searchCollection.Add(statementsContext.StatementsInfo.Local[i]);
+                }
+
+                listBox.ItemsSource = searchCollection; //listBox заполняется объектами из коллекции поиска
+                statusBar.Text = $"Заявлений: {listBox.Items.Count}";   //обновление кол-ва заявлений
+            }
         }
     }
 }

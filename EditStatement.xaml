@@ -6,47 +6,45 @@
         xmlns:local="clr-namespace:EFCourtStatements"
         mc:Ignorable="d"
         Title="Данные поступившего заявления (жалобы, иска)" 
-        MinHeight="700" MinWidth="1100" Height="700" Width="1100"
+        MinHeight="650" MinWidth="1000" Height="650" Width="1000"
         Background="#232323" Foreground="White">
 
     <Window.Resources>
         <Style x:Key="tBl_style" TargetType="TextBlock">
             <Setter Property="Margin" Value="20 0 20 3"/>
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
-            <Setter Property="FontSize" Value="23"/>
+            <Setter Property="FontSize" Value="18"/>
             <Setter Property="FontFamily" Value="Candara Light"/>
         </Style>
         <Style x:Key="tBx_style" TargetType="TextBox">
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
-            <Setter Property="FontSize" Value="27"/>
+            <Setter Property="FontSize" Value="22"/>
             <Setter Property="Margin" Value="20 0 20 10"/>
-            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Padding" Value="2"/>
             <Setter Property="Background" Value="#efefef"/>
-            <Setter Property="Foreground" Value="#161616"/>
             <Setter Property="FontFamily" Value="Candara Light"/>
         </Style>
         <Style x:Key="cBx_style" TargetType="ComboBox">
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
-            <Setter Property="FontSize" Value="27"/>
+            <Setter Property="FontSize" Value="22"/>
             <Setter Property="Margin" Value="20 0 20 10"/>
-            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Padding" Value="2"/>
             <Setter Property="FontFamily" Value="Candara Light"/>
         </Style>
         <Style x:Key="but_style" TargetType="Button">
             <Setter Property="Margin" Value="20 0 20 20"/>
             <Setter Property="Padding" Value="10"/>
-            <Setter Property="FontSize" Value="23"/>
+            <Setter Property="FontSize" Value="18"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Background" Value="#232323"/>
             <Setter Property="FontFamily" Value="Candara Light"/>
         </Style>
         <Style x:Key="dp_style" TargetType="DatePicker">
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
-            <Setter Property="FontSize" Value="27"/>
+            <Setter Property="FontSize" Value="22"/>
             <Setter Property="Margin" Value="20 0 20 10"/>
-            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Padding" Value="2"/>
             <Setter Property="Background" Value="#efefef"/>
-            <Setter Property="Foreground" Value="#161616"/>
             <Setter Property="FontFamily" Value="Candara Light"/>
         </Style>
 

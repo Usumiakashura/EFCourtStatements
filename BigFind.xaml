@@ -6,91 +6,111 @@
         xmlns:local="clr-namespace:EFCourtStatements"
         mc:Ignorable="d"
         Title="Расширенный поиск" 
-        MinHeight="400" MinWidth="600" Height="400" Width="600"
+        MinHeight="330" MinWidth="600" Height="330" Width="600"
         Background="#232323" Foreground="White">
 
-    <!--<Window.Resources>
+    <Window.Resources>
         <Style x:Key="tBl_style" TargetType="TextBlock">
-            <Setter Property="Margin" Value="20 10 20 0"/>
+            <Setter Property="Margin" Value="10 10 10 0"/>
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="FontFamily" Value="Candara Light"/>
         </Style>
         <Style x:Key="tBx_style" TargetType="TextBox">
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
-            <Setter Property="FontSize" Value="23"/>
-            <Setter Property="Margin" Value="0 10 0 0"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="Margin" Value="10 0 10 0"/>
+            <Setter Property="Padding" Value="2"/>
             <Setter Property="Background" Value="#efefef"/>
             <Setter Property="Foreground" Value="#161616"/>
             <Setter Property="FontFamily" Value="Candara Light"/>
         </Style>
         <Style x:Key="but_style" TargetType="Button">
-            <Setter Property="Margin" Value="20 10 20 0"/>
+            <Setter Property="Margin" Value="10 30 10 20"/>
             <Setter Property="Padding" Value="3"/>
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Background" Value="#232323"/>
             <Setter Property="FontFamily" Value="Candara Light"/>
         </Style>
-    </Window.Resources>-->
+        <Style x:Key="cBx_style" TargetType="ComboBox">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="Margin" Value="10 0 10 0"/>
+            <Setter Property="Padding" Value="2"/>
+            <Setter Property="FontFamily" Value="Candara Light"/>
+        </Style>
+        <Style x:Key="dp_style" TargetType="DatePicker">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="Margin" Value="10 0 10 0"/>
+            <Setter Property="Padding" Value="2"/>
+            <Setter Property="Background" Value="#efefef"/>
+            <Setter Property="Foreground" Value="#161616"/>
+            <Setter Property="FontFamily" Value="Candara Light"/>
+        </Style>
+    </Window.Resources>
 
-    <Grid>
-        <!--<Grid.ColumnDefinitions>
-            <ColumnDefinition Width="6*"/>
-            <ColumnDefinition Width="2*"/>
+    <Grid x:Name="grid_find" Margin="10 0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <Grid x:Name="editJudge">
+        <Grid Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
                 <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
-                <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Фамилия:" Style="{StaticResource tBl_style}" 
-                       VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"/>
-            <TextBox x:Name="lastName" Style="{StaticResource tBx_style}"
-                     Grid.Row="0" Grid.Column="1" Text="{Binding Path=LastName}"/>
+            <TextBlock Text="Номер" Grid.Column="0" Grid.Row="0" 
+                       Style="{StaticResource tBl_style}"/>
+            <TextBlock Text="Тип" Grid.Column="1" Grid.Row="0"
+                       Style="{StaticResource tBl_style}"/>
+            <TextBlock Text="Судья" Grid.Column="2" Grid.Row="0"
+                       Style="{StaticResource tBl_style}"/>
 
-            <TextBlock Text="Имя:" Style="{StaticResource tBl_style}" 
-                       VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
-            <TextBox x:Name="firstName" Style="{StaticResource tBx_style}"
-                     Grid.Row="1" Grid.Column="1" Text="{Binding Path=FirstName}"/>
-
-            <TextBlock Text="Отчество:" Style="{StaticResource tBl_style}" 
-                       VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"/>
-            <TextBox x:Name="sName" Style="{StaticResource tBx_style}"
-                     Grid.Row="2" Grid.Column="1" Text="{Binding Path=SName}"/>
+            <TextBox x:Name="number"  Grid.Column="0" Grid.Row="1"
+                     Style="{StaticResource tBx_style}" Text="{Binding Path=Number}" 
+                     PreviewTextInput="Number_PreviewTextInput" />
+            <ComboBox x:Name="comboBoxType" Grid.Column="1" Grid.Row="1"
+                      Style="{StaticResource cBx_style}" />
+            <ComboBox x:Name="comboBoxJudge" Grid.Column="2" Grid.Row="1"
+                      Style="{StaticResource cBx_style}"/>
 
         </Grid>
 
-        <Button x:Name="Add" Style="{StaticResource but_style}" Content="Добавить" Click="Add_Click"
-                Grid.Column="1" Grid.Row="0" VerticalAlignment="Bottom"/>
-        <Button x:Name="Delete" Style="{StaticResource but_style}" Content="Удалить" Click="Delete_Click" 
-                Grid.Column="1" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBlock Text="ФИО / Название организации" 
+                       Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                       Style="{StaticResource tBl_style}"/>
+        <TextBox x:Name="pers_name" Grid.Column="0" Grid.Row="2" 
+                     Grid.ColumnSpan="2" Text="{Binding Path=PersName}"
+                     Style="{StaticResource tBx_style}"/>
 
-        <ListBox x:Name="listBox" FontSize="18" Grid.Row="1" 
-                 Margin="20 10 0 10" Background="#efefef" Foreground="#161616" >
-            --><!--DataContext="{Binding}"  >--><!--
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding}" Margin="5" Grid.Column="2"/>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <TextBlock Text="Дата поступления (с / по)" Grid.Column="0" Grid.Row="3"
+                       Style="{StaticResource tBl_style}"/>
+        <DatePicker x:Name="first_date"  Grid.Column="0" Grid.Row="4"
+                     Style="{StaticResource dp_style}" SelectedDate="{Binding Path=InDate}"/>
+        <DatePicker x:Name="second_date"  Grid.Column="1" Grid.Row="4"
+                     Style="{StaticResource dp_style}" SelectedDate="{Binding Path=DataCorrect}"/>
 
-        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Margin="0 0 0 10">
+        <Button Content="Поиск" VerticalAlignment="Bottom" Grid.Column="0" Grid.Row="5"
+                    Style="{StaticResource but_style}" Click="ButtonOk_Click"/>
+        <Button Content="Отмена" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="5"
+                    Style="{StaticResource but_style}" Click="ButtonCancel_Click"/>
 
-            <Button x:Name="OK" Style="{StaticResource but_style}" Content="Ок" Click="Button_Click"/>
-            <Button x:Name="Cancel" Style="{StaticResource but_style}" Content="Отмена" Click="Button_Click_1"/>
-        </StackPanel>-->
     </Grid>
 </Window>
