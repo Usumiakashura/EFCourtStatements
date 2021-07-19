@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EFCourtStatements"
         mc:Ignorable="d"
-        Title="Редактирование списка типов заявлений" 
+        Title="Редактирование списка судей" 
         MinHeight="400" MinWidth="600" Height="400" Width="600"
         Background="#232323" Foreground="White">
 

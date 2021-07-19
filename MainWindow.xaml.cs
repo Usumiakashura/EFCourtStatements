@@ -191,5 +191,11 @@ namespace EFCourtStatements
                 statusBar.Text = $"Заявлений: {listBox.Items.Count}";   //обновление кол-ва заявлений
             }
         }
+
+        private void MenuItemReport_Click(object sender, RoutedEventArgs e)
+        {
+            ReportWindow dialog = new ReportWindow(statementsContext);
+            var result = dialog.ShowDialog();
+        }
     }
 }
