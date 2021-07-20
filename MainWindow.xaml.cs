@@ -197,5 +197,10 @@ namespace EFCourtStatements
             ReportWindow dialog = new ReportWindow(statementsContext);
             var result = dialog.ShowDialog();
         }
+
+        private void MenuGraph_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

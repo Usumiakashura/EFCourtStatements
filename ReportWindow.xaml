@@ -35,7 +35,7 @@
 
     <Grid x:Name="grid" Margin="20 10" Width="auto" HorizontalAlignment="Left">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="540"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
