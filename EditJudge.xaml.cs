@@ -61,7 +61,7 @@ namespace EFCourtStatements
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            if (listBox.SelectedIndex > 0)
+            if (listBox.SelectedIndex >= 0)
             {
                 judge = listBox.SelectedItem as Judge;
 

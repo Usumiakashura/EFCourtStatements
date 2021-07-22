@@ -46,6 +46,11 @@ namespace EFCourtStatements
                 typeName.Text = "";
                 statementsContext.TypesSt.Load();
             }
+            else MessageBox.Show(
+                "Невозможно добавить пустое поле",
+                "Ошибка",
+                MessageBoxButton.OK,
+                MessageBoxImage.Warning);
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -87,7 +92,7 @@ namespace EFCourtStatements
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            if (listBox.SelectedIndex > 0)
+            if (listBox.SelectedIndex >= 0)
             {
                 typeST = listBox.SelectedItem as TypeST;
 

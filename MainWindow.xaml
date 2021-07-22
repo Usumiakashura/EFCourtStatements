@@ -50,7 +50,7 @@
             </MenuItem>
             <MenuItem x:Name="menuItemBigFind" Header="Расширенный поиск" Click="MenuItemBigFind_Click"/>
             <MenuItem x:Name="menuItemReport" Header="Отчет" Click="MenuItemReport_Click" />
-            <MenuItem x:Name="menuGraph" Header="График" Click="MenuGraph_Click" />
+            <!--<MenuItem x:Name="menuGraph" Header="График" Click="MenuGraph_Click" />-->
         </Menu>
 
         <TextBox x:Name="textBoxName" Grid.Row="1" Height="auto" VerticalAlignment="Top"
