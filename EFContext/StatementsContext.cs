@@ -1,10 +1,5 @@
 ﻿using EFCourtStatements.Models;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EFCourtStatements.EFContext
 {
@@ -18,9 +13,5 @@ namespace EFCourtStatements.EFContext
         {
             Database.SetInitializer(new StatementsInitializer());
         }
-
-
-
-
     }
 }

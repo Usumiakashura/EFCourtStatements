@@ -14,16 +14,9 @@ namespace EFCourtStatements.Models
 
         public  List<StatInfo> StatInfos { get; set; }
 
-
-
-
-
-
-
         public override string ToString()
         {
             return $"{NameType}";
         }
-
     }
 }
